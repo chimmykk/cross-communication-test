@@ -1,45 +1,18 @@
-import React, { useRef } from "react";
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  const iframeRef = useRef(null);
-
-  const handleClick = () => {
-
-    // Send a message to the iframe window to trigger the button click
-    iframeRef.current?.contentWindow?.postMessage("triggerButtonClick", "*");
-  };
-
+function ReactAppWithIframe() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button className="click-button" onClick={handleClick}>
-          Click Now
-        </button>
-      </header>
-      <iframe
-        ref={iframeRef}
-        src="http://localhost:5173/"
-        title="Localhost Frame"
-        width="100%"
-        height="400px"
-        style={{ border: "none" }}
-      />
+    <div>
+      <h1>So Webpage is the main parent</h1>
+      <div>
+      <iframe title="Webpage X" src="http://localhost:3001/" width="800" height="600"></iframe>
+        <button onClick={() => window.location.href = 'https://www.google.com'}>Go to Google</button>
+        <button onClick={() => window.location.href = 'https://www.facebook.com'}>Go to Facebook</button>
+        <button onClick={() => window.location.href = 'https://www.youtube.com'}>Go to YouTube</button>
+      </div>
     </div>
+    
   );
 }
 
-export default App;
+export default ReactAppWithIframe;
